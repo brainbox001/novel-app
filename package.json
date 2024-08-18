@@ -27,7 +27,7 @@
   "bugs": {
     "url": "https://github.com/brainbox001/novel-app/issues"
   },
-  "homepage": "https://github.com/user/example-project#readme",
+  "homepage": "https://github.com/brainbox001/novel-app#readme",
   "engines": {
     "node": ">=20.15.0",
     "npm": ">=10.7.0"
