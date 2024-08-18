@@ -1,0 +1,36 @@
+{
+  "name": "novel-app",
+  "version": "1.0.0",
+  "description": "A novel app project built on typescript",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest",
+    "dev": "nodemon index.js"
+  },
+  "keywords": ["novel app"],
+  "author": "Daniel Marcus <momsdboy@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.7",
+    "redis": "^3.1.2"
+  },
+  "devDependencies": {
+    "jest": "^26.0.1",
+    "nodemon": "^2.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brainbox001/novel-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/brainbox001/novel-app/issues"
+  },
+  "homepage": "https://github.com/user/example-project#readme",
+  "engines": {
+    "node": ">=20.15.0",
+    "npm": ">=10.7.0"
+  }
+}
+
