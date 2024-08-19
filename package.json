@@ -2,23 +2,26 @@
   "name": "novel-app",
   "version": "1.0.0",
   "description": "A novel app project built on typescript",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node dist/index.js",
     "test": "jest",
-    "dev": "nodemon index.js"
+    "dev": "nodemon dist/index.js"
   },
-  "keywords": ["novel app"],
+  "keywords": [
+    "novel app"
+  ],
   "author": "Daniel Marcus <momsdboy@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^5.9.7",
-    "redis": "^3.1.2"
+    "redis": "^3.1.2",
+    "typescript": "^5.5.4"
   },
   "devDependencies": {
-    "jest": "^26.0.1",
-    "nodemon": "^2.0.3"
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.4"
   },
   "repository": {
     "type": "git",
