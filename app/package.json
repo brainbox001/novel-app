@@ -4,9 +4,8 @@
   "description": "A novel app project built on typescript",
   "main": "dist/index.js",
   "scripts": {
-    "start": "node dist/index.js",
-    "test": "jest",
-    "dev": "nodemon dist/index.js"
+    "start": "nodemon dist/index.js",
+    "test": "jest"
   },
   "keywords": [
     "novel app"
@@ -14,12 +13,13 @@
   "author": "Daniel Marcus <momsdboy@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1",
-    "mongoose": "^5.9.7",
-    "redis": "^3.1.2",
-    "typescript": "^5.5.4"
+    "express": "^4.0.0",
+    "mongoose": "^5.0.0",
+    "redis": "^3.0.0",
+    "typescript": "^5.0.0"
   },
   "devDependencies": {
+    "@types/express": "^4.17.21",
     "jest": "^29.7.0",
     "nodemon": "^3.1.4"
   },
@@ -36,4 +36,3 @@
     "npm": ">=10.7.0"
   }
 }
-
