@@ -12,8 +12,6 @@ services:
     depends_on:
       - mongo
       - redis
-    networks:
-      - live
 
   mongo:
     image: mongo
@@ -23,6 +21,8 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: example
     volumes:
       - dev-db-data:/var/mongo/data
+    ports:
+      - "27017:27017"
 
   mongo-express:
     image: mongo-express
@@ -43,12 +43,8 @@ services:
     hostname: redis
     ports:
       - 6379:6379
-    networks:
-      - live
-
 
 volumes:
   dev-db-data:
 
-networks:
-  live:
+
