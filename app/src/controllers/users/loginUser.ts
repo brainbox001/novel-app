@@ -25,7 +25,7 @@ export default async function loginUser(req:Request, res:Response) {
     email = body.email
     password = body.password
 
-    let isDbUser = await User.findOne({email:email}, 'password');
+    let isDbUser = await User.findOne({email:email}, 'password name');
 
     if (isDbUser){
         storedPassword = isDbUser.password.string
@@ -36,18 +36,22 @@ export default async function loginUser(req:Request, res:Response) {
 
         const secretKey = '4b88e72faee7a16a';
             const userId = isDbUser._id;
-            console.log(userId);
+
             const payload = {id: userId};
 
             const options = {
                 expiresIn: '7h'
             };
             const token = jwt.sign(payload, secretKey, options);
-
+           
             res.cookie('authToken', token, {
                 httpOnly: true, 
                 maxAge: 60 * 60 * 7 
             });
+            await (await client).set(userId.toString(), isDbUser.name, {
+                EX: 60 * 60 * 7
+            });
+
             return res.status(200).json({success: `Db user successfully logged in!!`});
     }
 

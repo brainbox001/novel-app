@@ -7,7 +7,8 @@ export default async function logoutUser(req:Request, res:Response) {
 
     if (cookies['authToken']){
         const token = cookies.authToken;
-        (await client).sAdd('tokenBlacklist', token);
+      
+        await (await client).sAdd('tokenBlacklist', token);
         res.cookie('authToken', '', {
             expires : new Date(0)
         });

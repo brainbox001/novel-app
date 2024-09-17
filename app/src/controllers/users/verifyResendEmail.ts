@@ -4,7 +4,7 @@ import User from "../../dbRedisSchema/userSchema";
 import pool from "../../workers/pool";
 import jwt from 'jsonwebtoken';
 
-const secretKey = '4b88e72faee7a16a'
+const secretKey = '4b88e72faee7a16a';
 
 export default async function verifyEmail(req:Request, res:Response) {
     let code = '';
@@ -18,7 +18,6 @@ export default async function verifyEmail(req:Request, res:Response) {
 
         if (!redisSession) return res.redirect(307, 'user/login')
         const sessionData = JSON.parse(redisSession);
-
     
         email = sessionData.email;
         
@@ -33,8 +32,8 @@ export default async function verifyEmail(req:Request, res:Response) {
         return res.status(400).json({error: 'Invalid or expired verification code'})
     }
     let userDetails = await (await client).hGetAll(email)
-
-    const newUser = new User({
+   
+    const newUser:any = new User({
         name: userDetails.name,
         email: email,
         password: {
@@ -47,7 +46,7 @@ export default async function verifyEmail(req:Request, res:Response) {
     await newUser.save();
     
     const userId = await newUser._id
-    console.log(userId)
+
     const payload = {id: userId}
 
     const options = {
@@ -63,8 +62,12 @@ export default async function verifyEmail(req:Request, res:Response) {
         httpOnly: true, 
         maxAge: 60 * 60 * 7 
       });
-    
-    res.redirect(303, '/')
+
+    await (await client).set(userId.toString(), newUser.name, {
+        EX: 60 * 60 * 7
+    });
+
+    res.redirect(303, '/');
 };
 
 export async function resendMail(req:Request, res:Response) {

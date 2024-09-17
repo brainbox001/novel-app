@@ -1,5 +1,6 @@
 import express, { Request, Response, NextFunction} from 'express';
 import userRoutes from './routers/userRoute';
+import novelRoutes from './routers/novelRoute';
 import cookieParser from 'cookie-parser';
 import connectDB from './dbRedisSchema/dbConnect';
 
@@ -12,10 +13,13 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.get('/', (req: Request, res: Response) => {
-    res.status(200).json({welcome: 'Welcome to novel app'})
+  let userAgent: string | undefined;
+  userAgent = req.headers['user-agent']
+    res.status(200).json({welcome: `Welcome to novel app ${userAgent}`})
   });
 
 app.use('/user', userRoutes);
+app.use('/novel', novelRoutes);
 
 app.use((err: any, req:Request, res:Response, next:NextFunction) => {
   console.error(err.stack);
