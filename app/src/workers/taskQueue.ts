@@ -1,11 +1,5 @@
 
-interface Task {
-    id:number, 
-    taskName : string, 
-    options : any, 
-    callback:(result: any) => void
-}
-export default class MaxBinaryHeap {
+export default class MinBinaryHeap {
     tasks : any[]
     constructor() {
         this.tasks = []

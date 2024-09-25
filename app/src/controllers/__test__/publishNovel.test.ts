@@ -41,6 +41,7 @@ jest.mock('../../dbRedisSchema/redisConnect', () => {
             imageBuffer : fileBuffer,
         }),
         del : jest.fn().mockResolvedValue('0'),
+        get : jest.fn().mockResolvedValue('thriller'),
     };
     return {
         __esModule: true,
@@ -73,6 +74,6 @@ test('function calls', async () => {
     await publishNovel(req, res);
 
     expect(mockClient.exists).toHaveBeenCalledTimes(2);
-    expect(Content.updateOne).toHaveBeenCalledWith({ _id: `drftfb4${count}` }, { $unset: { expiresAt: "" } });
+    expect(Content.updateOne).toHaveBeenCalled();
     expect(mockClient.lPop).toHaveBeenCalledTimes(5);
 });

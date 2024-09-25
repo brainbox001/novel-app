@@ -3,6 +3,7 @@ import userRoutes from './routers/userRoute';
 import novelRoutes from './routers/novelRoute';
 import cookieParser from 'cookie-parser';
 import connectDB from './dbRedisSchema/dbConnect';
+import checkToken from './middlewares/tokenCheck';
 
 connectDB()
 
@@ -11,6 +12,7 @@ const port = 3001;
 
 app.use(express.json());
 app.use(cookieParser());
+app.use(checkToken);
 
 app.get('/', (req: Request, res: Response) => {
   let userAgent: string | undefined;

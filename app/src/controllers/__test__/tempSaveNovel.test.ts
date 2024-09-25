@@ -55,7 +55,8 @@ test('tempoarily save novel name and image', async () => {
 
     req = {
         body: { novelName: 'some type of novel' },
-        file : {mimetype : 'image/png', buffer : fileBuffer}
+        file : {mimetype : 'image/png', buffer : fileBuffer},
+        novelName: 'some type of novel'
     } as unknown as Request;
 
     await tempSaveNameAndImage(req, res);
@@ -81,8 +82,8 @@ test('tempoarily save contents assiociated to a novel', async () => {
     let req: Request;
 
     req = {
+        novelName: 'some type of novel',
         body: { 
-            novelName: 'some type of novel',
             content : `Its Friday night at Gabe Riveras house after the lacrosse game. Our school won, so everyone is in very fine spirits, Peter most of all, because he scored the winning shot. Hes across the room playing poker with some of the guys from his team; he is sitting with his chair tipped back, his back against the wall. His hair is still wet from showering after the game. I'm on the couch with my friends Lucas Krapf and Pammy Subkoff, and they're flipping through the latest issue of Teen Vogue, debating whether or not Pammy should get bangs.`
         },
 
@@ -91,7 +92,7 @@ test('tempoarily save contents assiociated to a novel', async () => {
     await tempSaveContent(req, res);
 
     expect(res.status).toHaveBeenCalledWith(201);
-    expect(mockClient.rPush).toHaveBeenCalledWith(`${req.body.novelName}:contentIds`, 'ef134hhfhftu5833956f');
+    expect(mockClient.rPush).toHaveBeenCalledWith(`${req.novelName}:contentIds`, 'ef134hhfhftu5833956f');
     expect(res.json).toHaveBeenCalledWith({
         message: 'content saved'
       });

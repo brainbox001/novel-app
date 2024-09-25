@@ -1,6 +1,6 @@
 import { Worker } from "worker_threads";
 import path from "path";
-import MaxBinaryHeap from "./taskQueue";
+import MinBinaryHeap from "./taskQueue";
 
 interface Task {
   taskName: string;
@@ -23,7 +23,7 @@ class Pool {
     this.threadCount = poolCount; // number of threads that will be spawned
     this.threads = []; // all of our worker threads (same length as threadCount)
     this.idleThreads = []; // threads that are not currently working
-    this.scheduledTasks = new MaxBinaryHeap(); // queue of tasks that need to be executed - these are not currently running in one of the threads
+    this.scheduledTasks = new MinBinaryHeap(); // queue of tasks that need to be executed - these are not currently running in one of the threads
     // Spawn the threads
     for (let i = 0; i < this.threadCount; i++) {
       this.spawnThread();

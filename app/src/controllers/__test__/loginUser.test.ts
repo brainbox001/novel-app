@@ -8,6 +8,7 @@ jest.mock('../../dbRedisSchema/redisConnect', () => {
     const mockClient = {
         connect: jest.fn().mockResolvedValue(true),
         exists: jest.fn().mockResolvedValue(true),
+        set: jest.fn().mockResolvedValue('1'),
         hmGet: jest.fn().mockResolvedValue(['2050d9af23f54eb1725d910c648617a5:6ef7f5fe0c6a34579edd0c3574b7a6ba3d843b30ea65fdb0821e0aa73aadf20f79176ddd617bec326e6674f7a80c33e1e6fb661a830ac5a211b5d39cf27eaa26', '2050d9af23f54eb1725d910c648617a5', 'Tested']),
     };
     return {

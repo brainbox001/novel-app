@@ -7,11 +7,10 @@ const userSchema = new Schema({
         string: {type: String, required: true},
         salt : {type: String, required: true}
     },
-    emailIsVerified : {type: Boolean}
+    emailIsVerified : {type: Boolean},
+    preference : [String]
     
 }, {timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' }});
 
-userSchema.index({email: 1}, {background: true})
-
-const User = mongoose.model('User', userSchema)
+const User = mongoose.model('User', userSchema);
 export default User

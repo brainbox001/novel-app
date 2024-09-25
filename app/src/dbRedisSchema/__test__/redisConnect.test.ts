@@ -11,6 +11,10 @@ beforeAll(async () => {
     await client.connect(); 
   });
 
+afterAll(async() => {
+    await client.disconnect()
+})
+
 describe('redis connect test', () => {
     it('can connect successful to redis', () => {
         expect(client.isReady).toBeTruthy()

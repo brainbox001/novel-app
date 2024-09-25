@@ -4,8 +4,9 @@ import Content from "../../dbRedisSchema/contentSchema";
 
 export async function tempSaveNameAndImage(req:Request, res:Response) {
     let novelName : string;
+    let category : string;
     novelName = req.novelName;
-
+    category = req.category
     const image = req.file;
     if (!image) {
       return res.status(400).json({error:'Novel image are required.'});
@@ -14,7 +15,7 @@ export async function tempSaveNameAndImage(req:Request, res:Response) {
     const nameExists = await (await client).exists(novelName);
     if (nameExists) return res.status(400).json({error:'Novel name already exists temp.'});
     
-    await (await client).set(novelName, novelName, {
+    await (await client).set(novelName, category, {
       EX: 60 * 60 * 24
     });
     const imageKey = `${novelName}:image`;
@@ -55,8 +56,8 @@ export default async function tempSaveContent(req:Request, res:Response) {
 
   await newContent.save();
   let contentId =  await newContent._id;
- 
-  (await client).rPush(`${novelName}:contentIds`, contentId.toString());
+  
+  await (await client).rPush(`${novelName}:contentIds`, contentId.toString());
  
   if(!contentListExists) await (await client).expire(`${novelName}:contentIds`, 86270);
 

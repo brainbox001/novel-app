@@ -1,5 +1,5 @@
-import MaxBinaryHeap from "../taskQueue";
-let heap = new MaxBinaryHeap();
+import MinBinaryHeap from "../taskQueue";
+let heap = new MinBinaryHeap();
 
 describe('priority queue', () => {
     it('queue task by prority', async () => {

@@ -2,7 +2,8 @@ import client from "../redisConnect";
 
 
 afterAll(async () => {
-    (await client).flushAll()
+    await (await client).flushAll();
+    await (await client).disconnect();
   })
 
 describe('test redis keys', () => {
