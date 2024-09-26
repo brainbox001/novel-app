@@ -25,10 +25,18 @@ The application is built with typescript, so do well to go through the [ts-confi
 
 A user authentication system, the application has two users;
 
-The unverified user - user details is stored in redis, to be deleted after 30 days. Uses a redis session.
+The unverified user - user details are stored in redis, to be deleted after 30 days. Uses a redis session.
 
 The verfied user - details stored permamently to the database, uses the jwt session.
 
 If you're testing the user routes(register, login, verify-email, logout), you must override the user-agent header with **novel-app/check**, this ensures a script can't be used to register or login user. The [userAgent](https://github.com/brainbox001/novel-app/blob/master/app/src/middlewares/user.ts) function enforces this.
 
+User password is hashed before being stored in the database.
 
+Once you've been registered, check you email for a verification code, use it to verify your email.
+
+The [tokenCheck](https://github.com/brainbox001/novel-app/blob/master/app/src/middlewares/tokenCheck.ts) middleware checks for expired or invalid tokens and revoke such requests.
+
+View all the routes assiocated with users - [userRoutes](https://github.com/brainbox001/novel-app/blob/master/app/src/routers/userRoute.ts).
+
+The [novel middleware](https://github.com/brainbox001/novel-app/blob/master/app/src/middlewares/novel.ts#L9) has the isAuthenticated functionality that allows only authenticated users to upload novels. It also checks against blacklisted tokens(once a user logs out, his/her token is automatically blacklisted) and revoke requests with such tokens.
