@@ -51,6 +51,7 @@
 The database queries are well indexed for logarithmic time query lookup.
 
 **Tech stacks - Docker, Typescript, Nodejs, Express, Redis, Mongodb**.
+
 For more info about the app, contact me - +2348168958556 on telegram // momsdboy@gmail.com - email.
 
 **Still in development, open for contributions.**
