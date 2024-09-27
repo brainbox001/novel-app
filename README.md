@@ -50,6 +50,8 @@
 + The application has a solid architecture that balances user's experience with its scalability. A route would not hold more than 40kb of data in memory at a time, data with more kb size are sent as chunks inorder to prevent peformance degradation.
 The database queries are well indexed for logarithmic time query lookup.
 
+Application functionalities tested with unit tests and integration test.
+
 **Tech stacks - Docker, Typescript, Nodejs, Express, Redis, Mongodb**.
 
 For more info about the app, contact me - +2348168958556 on telegram // momsdboy@gmail.com - email.
