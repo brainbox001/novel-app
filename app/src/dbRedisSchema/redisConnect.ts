@@ -2,7 +2,7 @@ import {createClient} from 'redis';
 
 async function redisConnect() {
     const client = createClient(
-        {url: 'redis://red-cs3fue3v2p9s73effaig:6379'}
+        {url: 'redis://red-cs3g2dg8fa8c73dbl7gg:6379'}
     );
     
     client.on('error', (err:Error) => {
