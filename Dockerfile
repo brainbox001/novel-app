@@ -13,4 +13,4 @@ RUN npm install
 EXPOSE 3001
 
 # Define the command to run the app
-CMD [ "run.sh" ]
+CMD [ "npm start" ]
