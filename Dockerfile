@@ -8,9 +8,10 @@ WORKDIR /app
 # Install dependencies
 # RUN apk  add --update --no-cache nano 
 RUN npm install
+RUN npx tsc
 
 # Expose the port that the app runs on
 EXPOSE 3001
 
 # Define the command to run the app
-CMD [ "npm start" ]
+CMD [ "npm", start" ]
