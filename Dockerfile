@@ -14,4 +14,4 @@ RUN npx tsc
 EXPOSE 3001
 
 # Define the command to run the app
-CMD [ "npm", start" ]
+CMD [ "npm", "start" ]
