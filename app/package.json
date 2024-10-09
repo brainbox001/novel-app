@@ -4,7 +4,7 @@
   "description": "A novel app project built on typescript",
   "main": "dist/index.js",
   "scripts": {
-    "start": "nodemon dist/index.js",
+    "start": "node dist/index.js",
     "test": "jest dist/controllers --detectOpenHandles"
   },
   "keywords": [
