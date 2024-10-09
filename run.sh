@@ -7,5 +7,6 @@ echo "Starting Node.js build process..."
 
 # Build the application
 npx tsc
+npm start
 
 echo "Node.js build process completed successfully."
