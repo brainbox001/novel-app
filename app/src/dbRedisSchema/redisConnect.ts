@@ -10,6 +10,7 @@ async function redisConnect() {
         return null
     });   
     await client.connect(); 
+    console.log('connected to redis');
     return client
 }
 const client = redisConnect()
